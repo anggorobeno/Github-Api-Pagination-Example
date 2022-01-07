@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dimens_16"
+    android:background="@drawable/bg_article">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="@dimen/dimens_75"
+        android:layout_height="@dimen/dimens_75"
+        android:layout_marginTop="@dimen/dimens_16"
+        android:layout_marginStart="@dimen/dimens_16"
+        android:layout_marginBottom="@dimen/dimens_16"
+        tools:src="@drawable/ic_launcher_background"
+        app:layout_goneMarginBottom="@dimen/dimens_16"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:riv_corner_radius="@dimen/dimens_12" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimens_16"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/font_16"
+        tools:text="@string/dummy_username"
+        app:layout_constraintStart_toEndOf="@id/iv_avatar"
+        app:layout_constraintTop_toTopOf="@id/iv_avatar" />
+
+    <TextView
+        android:id="@+id/tv_user_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimens_16"
+        android:layout_marginEnd="@dimen/dimens_16"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/text_grey"
+        android:textSize="@dimen/font_14"
+        tools:text="@string/dummy_type"
+        app:layout_constraintStart_toEndOf="@id/iv_avatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_username" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

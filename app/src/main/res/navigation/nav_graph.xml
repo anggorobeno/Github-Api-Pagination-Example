@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/searchFragment2">
+
+    <fragment
+        android:id="@+id/searchFragment2"
+        android:name="com.example.anggorobenolukito.ui.SearchFragment"
+        android:label="SearchFragment" />
+    <fragment
+        android:id="@+id/pagingFragment"
+        android:name="com.example.anggorobenolukito.ui.PagingFragment"
+        android:label="PagingFragment" />
+</navigation>

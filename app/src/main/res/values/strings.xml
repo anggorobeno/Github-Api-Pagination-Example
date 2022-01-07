@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Anggoro Beno Lukito</string>
+    <string name="empty_search">No User Found</string>
+    <string name="dummy_username">Anggoro</string>
+    <string name="dummy_type">Admin</string>
+    <string name="tv_result_error">Result could not be loaded</string>
+    <string name="btn_retry">Retry</string>
+</resources>
