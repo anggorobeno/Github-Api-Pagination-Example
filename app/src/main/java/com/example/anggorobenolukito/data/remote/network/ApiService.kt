@@ -1,12 +1,10 @@
 package com.example.anggorobenolukito.data.remote.network
 
 import com.example.anggorobenolukito.BuildConfig
+import com.example.anggorobenolukito.data.remote.response.DetailUserResponse
 import com.example.anggorobenolukito.data.remote.response.UserResponse
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Headers
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ApiService {
     @GET("/search/users")
@@ -22,4 +20,11 @@ interface ApiService {
         @Query("per_page") limit : Int,
         @Header("Authorization") apiKey : String = BuildConfig.API_KEY
     ): UserResponse
+
+    @GET("/users/{username}")
+    fun getDetailUser(
+        @Path("username") username : String,
+        @Header("Authorization") apiKey : String = BuildConfig.API_KEY
+    ) : Response<DetailUserResponse>
+
 }
