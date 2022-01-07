@@ -25,7 +25,7 @@
         android:layout_width="@dimen/dimens_250"
         android:layout_height="@dimen/dimens_200"
         android:layout_marginTop="@dimen/dimens_200"
-        android:src="@drawable/ic_article"
+        android:src="@drawable/ic_empty_state"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

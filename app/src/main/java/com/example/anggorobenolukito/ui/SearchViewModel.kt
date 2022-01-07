@@ -72,7 +72,5 @@ class SearchViewModel @Inject constructor(private val apiService: ApiService,pri
         }
     }
 
-//    val user = repository.getUserSearchResults("anggoro")
-//    private val currentQuery = MutableLiveData()
 
 }
