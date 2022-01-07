@@ -6,6 +6,8 @@ import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import com.example.anggorobenolukito.data.Repository
+import com.example.anggorobenolukito.data.remote.response.ItemsItem
+import com.example.anggorobenolukito.utils.Resource2
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -25,6 +27,10 @@ class PagingViewModel @Inject constructor(private val repository: Repository) : 
     fun searchUsers(query : String){
         currentQuery.value = query
     }
+
+
+
+
 
 
 }

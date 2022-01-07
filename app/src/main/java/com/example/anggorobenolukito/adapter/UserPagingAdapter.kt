@@ -29,17 +29,16 @@ class UserPagingAdapter : PagingDataAdapter<ItemsItem, UserPagingAdapter.ViewHol
 
     inner class ViewHolder(private val binding: ItemListUserBinding) :
         RecyclerView.ViewHolder(binding.root) {
-            fun bind(data : ItemsItem){
-                with(binding){
-                    Glide.with(itemView.context)
-                        .load(data.avatarUrl)
-                        .transition(DrawableTransitionOptions.withCrossFade())
-                        .error(R.drawable.baseline_error_outline_black_24dp)
-                        .into(ivAvatar)
-                    tvUserType.text = data.type
-                    tvUsername.text = data.login
-                }
+        fun bind(data: ItemsItem) {
+            with(binding) {
+                Glide.with(itemView.context)
+                    .load(data.avatarUrl)
+                    .error(R.drawable.baseline_error_outline_black_24dp)
+                    .into(ivAvatar)
+                tvUserType.text = data.type
+                tvUsername.text = data.login
             }
+        }
 
 
     }
