@@ -8,10 +8,10 @@ import androidx.room.Query
 import com.example.anggorobenolukito.data.local.entity.DetailUserEntity
 
 @Dao
-interface Dao {
+interface GithubDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUserDetail(entity : List<DetailUserEntity>)
 
-    @Query("SELECT * FROM detail_user_table")
+    @Query("SELECT * FROM detail_user_table WHERE username = :username")
     fun getDetailUser(username : String) : LiveData<DetailUserEntity>
 }

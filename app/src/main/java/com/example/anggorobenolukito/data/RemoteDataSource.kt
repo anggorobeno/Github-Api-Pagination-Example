@@ -7,9 +7,10 @@ import com.example.anggorobenolukito.data.remote.network.ApiResponse
 import com.example.anggorobenolukito.data.remote.network.ApiService
 import com.example.anggorobenolukito.data.remote.response.DetailUserResponse
 import com.example.anggorobenolukito.data.remote.response.ItemsItem
-import com.example.anggorobenolukito.domain.UserModel
-import com.example.anggorobenolukito.utils.Resource
+import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.HttpException
+import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject
 
@@ -44,19 +45,21 @@ class RemoteDataSource @Inject constructor(
 
     fun getDetailUser(username: String): LiveData<ApiResponse<DetailUserResponse>> {
         val user = MutableLiveData<ApiResponse<DetailUserResponse>>()
-        val response = apiService.getDetailUser(username)
-        val result = response.body()
-        try {
-            if (response.isSuccessful && result != null) {
-                user.value = ApiResponse.Success(result)
-            } else {
-                user.value = ApiResponse.Error(response.message())
+        apiService.getDetailUser(username).enqueue(object : Callback<DetailUserResponse> {
+            override fun onResponse(
+                call: Call<DetailUserResponse>,
+                response: Response<DetailUserResponse>
+            ) {
+                if (response.isSuccessful && response.body() != null) {
+                    user.value = ApiResponse.success(response.body()!!)
+                }
             }
-        } catch (e: HttpException) {
-            user.value = ApiResponse.Error(e.toString())
-        } catch (e: IOException) {
-            user.value = ApiResponse.Error(e.toString())
-        }
+
+            override fun onFailure(call: Call<DetailUserResponse>, t: Throwable) {
+
+            }
+
+        })
         return user
 
     }

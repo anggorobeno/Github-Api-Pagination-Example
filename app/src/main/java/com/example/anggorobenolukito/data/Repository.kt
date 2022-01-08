@@ -8,6 +8,7 @@ import androidx.paging.PagingData
 import androidx.paging.liveData
 import com.example.anggorobenolukito.data.local.LocalDataSource
 import com.example.anggorobenolukito.data.local.LocalDataSource_Factory
+import com.example.anggorobenolukito.data.local.entity.DetailUserEntity
 import com.example.anggorobenolukito.data.remote.network.ApiResponse
 import com.example.anggorobenolukito.data.remote.network.ApiService
 import com.example.anggorobenolukito.data.remote.response.DetailUserResponse
@@ -33,12 +34,12 @@ class Repository @Inject constructor(
         ).liveData
     }
 
-    fun getDetailUser(username: String) = object : NetworkBoundResource<DetailUserModel,DetailUserResponse>(appExecutors){
-        override fun loadFromDB(): LiveData<DetailUserModel> {
-            return localDataSource.getDetailUser(username).map { DataMapper.mapDetailUserEntitiesToModel(it) }
+    fun getDetailUser(username: String) = object : NetworkBoundResource<DetailUserEntity,DetailUserResponse>(appExecutors){
+        override fun loadFromDB(): LiveData<DetailUserEntity> {
+            return localDataSource.getDetailUser(username)
         }
 
-        override fun shouldFetch(data: DetailUserModel?): Boolean {
+        override fun shouldFetch(data: DetailUserEntity?): Boolean {
             return data == null
 
         }
@@ -51,5 +52,5 @@ class Repository @Inject constructor(
             val user = DataMapper.mapDetailResponseToEntities(data)
             localDataSource.insertDetailUser(user)
         }
-    }
+    }.asLiveData()
 }

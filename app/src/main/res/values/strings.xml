@@ -7,4 +7,11 @@
     <string name="btn_retry">Retry</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="no_user_found">No User Found</string>
+    <string name="name">name</string>
+    <string name="username">username</string>
+    <string name="repository">user_repository</string>
+    <string name="followers">user_followers</string>
+    <string name="following">user_following</string>
+    <string name="company">user_company</string>
+    <string name="location">user_location</string>
 </resources>

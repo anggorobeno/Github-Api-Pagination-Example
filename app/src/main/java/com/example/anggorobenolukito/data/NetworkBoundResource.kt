@@ -3,16 +3,16 @@ package com.example.anggorobenolukito.data
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.example.anggorobenolukito.data.remote.network.ApiResponse
+import com.example.anggorobenolukito.data.remote.response.StatusResponse
 import com.example.anggorobenolukito.utils.AppExecutors
 import com.example.anggorobenolukito.utils.Resource
-import javax.inject.Inject
 
-abstract class NetworkBoundResource<ResultType, RequestType> (private val mExecutors: AppExecutors) {
+abstract class NetworkBoundResource<ResultType, RequestType>(private val mExecutors: AppExecutors) {
 
     private val result = MediatorLiveData<Resource<ResultType>>()
 
     init {
-        result.value = Resource.Loading(null)
+        result.value = Resource.loading(null)
 
         @Suppress("LeakingThis")
         val dbSource = loadFromDB()
@@ -23,7 +23,7 @@ abstract class NetworkBoundResource<ResultType, RequestType> (private val mExecu
                 fetchFromNetwork(dbSource)
             } else {
                 result.addSource(dbSource) { newData ->
-                    result.value = Resource.Success(newData)
+                    result.value = Resource.success(newData)
                 }
             }
         }
@@ -44,30 +44,30 @@ abstract class NetworkBoundResource<ResultType, RequestType> (private val mExecu
         val apiResponse = createCall()
 
         result.addSource(dbSource) { newData ->
-            result.value = Resource.Loading(newData)
+            result.value = Resource.loading(newData)
         }
         result.addSource(apiResponse) { response ->
             result.removeSource(apiResponse)
             result.removeSource(dbSource)
-            when (response) {
-                is ApiResponse.Success ->
+            when (response.status) {
+                StatusResponse.SUCCESS ->
                     mExecutors.diskIO().execute {
-                        saveCallResult(response.data)
+                        saveCallResult(response.body)
                         mExecutors.mainThread().execute {
                             result.addSource(loadFromDB()) { newData ->
-                                result.value = Resource.Success(newData)
+                                result.value = Resource.success(newData)
                             }
                         }
                     }
-                is ApiResponse.Empty -> mExecutors.mainThread().execute {
+                StatusResponse.EMPTY -> mExecutors.mainThread().execute {
                     result.addSource(loadFromDB()) { newData ->
-                        result.value = Resource.Success(newData)
+                        result.value = Resource.success(newData)
                     }
                 }
-                is ApiResponse.Error -> {
+                StatusResponse.ERROR -> {
                     onFetchFailed()
                     result.addSource(dbSource) { newData ->
-                        result.value = Resource.Error(response.errorMessage, newData)
+                        result.value = Resource.error(response.message, newData)
                     }
                 }
             }

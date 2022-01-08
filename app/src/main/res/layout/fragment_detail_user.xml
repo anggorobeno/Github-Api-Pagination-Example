@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bg_article"
+    android:padding="16dp">
+
+
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/detail_avatar"
+        android:layout_width="@dimen/dimens_150"
+        android:layout_height="@dimen/dimens_150"
+        android:layout_centerHorizontal="true"
+        app:riv_corner_radius="@dimen/dimens_12" />
+    <TextView
+        android:id="@+id/detail_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimens_0"
+        android:layout_marginTop="@dimen/dimens_20"
+        android:layout_below="@id/detail_avatar"
+        tools:text="@string/name"
+        android:textSize="@dimen/font_24"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/detail_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detail_name"
+        android:layout_marginStart="@dimen/dimens_0"
+        android:layout_marginTop="@dimen/dimens_10"
+        android:ellipsize="end"
+        android:textSize="@dimen/font_18"
+        android:maxLines="3"
+        tools:text="@string/username"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/detail_repository"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimens_20"
+        android:layout_marginTop="@dimen/dimens_10"
+        android:layout_toStartOf="@id/detail_followers"
+        android:ellipsize="end"
+        android:maxLines="3"
+        tools:text="@string/repository"
+        android:layout_alignBaseline="@id/detail_followers"/>
+    <TextView
+        android:id="@+id/detail_followers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detail_username"
+        android:layout_marginStart="@dimen/dimens_0"
+        android:layout_marginTop="@dimen/dimens_10"
+        android:ellipsize="end"
+        android:maxLines="3"
+        tools:text="@string/followers"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/detail_following"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimens_20"
+        android:layout_marginTop="@dimen/dimens_10"
+        android:layout_toEndOf="@id/detail_followers"
+        android:ellipsize="end"
+        android:maxLines="3"
+        tools:text="@string/following"
+        android:layout_alignBaseline="@id/detail_followers"/>
+    <TextView
+        android:id="@+id/detail_company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detail_followers"
+        android:layout_marginStart="@dimen/dimens_0"
+        android:layout_marginTop="@dimen/dimens_10"
+        android:ellipsize="end"
+        android:maxLines="3"
+        tools:text="@string/company"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/detail_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detail_company"
+        android:layout_marginStart="@dimen/dimens_0"
+        android:layout_marginTop="@dimen/dimens_10"
+        android:ellipsize="end"
+        android:maxLines="3"
+        tools:text="@string/location"
+        android:layout_centerHorizontal="true"/>
+
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detail_location"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+</RelativeLayout>

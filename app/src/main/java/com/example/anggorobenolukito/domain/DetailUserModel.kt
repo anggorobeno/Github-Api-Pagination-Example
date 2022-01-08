@@ -11,9 +11,9 @@ data class DetailUserModel(
 
     val followingUrl: String? = null,
 
-    val twitterUsername: Any? = null,
+    val twitterUsername: String? = null,
 
-    val bio: Any? = null,
+    val bio: String? = null,
 
     val createdAt: String? = null,
 
@@ -29,7 +29,7 @@ data class DetailUserModel(
 
     val siteAdmin: Boolean? = null,
 
-    val company: Any? = null,
+    val company: String? = null,
 
     val id: Int? = null,
 
@@ -37,11 +37,11 @@ data class DetailUserModel(
 
     val gravatarId: String? = null,
 
-    val email: Any? = null,
+    val email: String? = null,
 
     val organizationsUrl: String? = null,
 
-    val hireable: Any? = null,
+    val hireable: Boolean? = null,
 
     val starredUrl: String? = null,
 
@@ -65,7 +65,7 @@ data class DetailUserModel(
 
     val name: String? = null,
 
-    val location: Any? = null,
+    val location: String? = null,
 
     val nodeId: String? = null
 )

@@ -7,10 +7,10 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/sv_users"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimens_0"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimens_16"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/dimens_16"
         android:layout_marginEnd="@dimen/dimens_16"
         android:background="@drawable/bg_search"
         app:iconifiedByDefault="false"
@@ -51,7 +51,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_user"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/dimens_0"
         android:layout_marginTop="@dimen/dimens_16"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

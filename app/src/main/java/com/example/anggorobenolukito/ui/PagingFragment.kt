@@ -3,7 +3,6 @@ package com.example.anggorobenolukito.ui
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,16 +10,15 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.paging.LoadState
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.anggorobenolukito.R
-import com.example.anggorobenolukito.adapter.UserAdapter
 import com.example.anggorobenolukito.adapter.UserLoadStateAdapter
 import com.example.anggorobenolukito.adapter.UserPagingAdapter
+import com.example.anggorobenolukito.data.remote.response.ItemsItem
 import com.example.anggorobenolukito.databinding.FragmentPagingBinding
-import com.example.anggorobenolukito.databinding.FragmentSearchBinding
-import com.google.android.material.snackbar.Snackbar
+import com.example.anggorobenolukito.utils.Constant
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -93,6 +91,14 @@ class PagingFragment : Fragment() {
             binding.btnRetry.setOnClickListener {
                 userAdapter.retry()
             }
+            userAdapter.setOnItemCallback(object : UserPagingAdapter.OnItemClickCallback{
+                override fun onItemClicked(data: ItemsItem) {
+                    val bundle = Bundle()
+                    bundle.putString(Constant.EXTRA_USER,data.login)
+                    findNavController().navigate(R.id.action_pagingFragment_to_detailUserFragment,bundle)
+                }
+
+            })
         }
     }
 

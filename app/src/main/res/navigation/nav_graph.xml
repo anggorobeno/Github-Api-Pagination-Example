@@ -2,14 +2,19 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/searchFragment2">
+    app:startDestination="@id/pagingFragment">
 
-    <fragment
-        android:id="@+id/searchFragment2"
-        android:name="com.example.anggorobenolukito.ui.SearchFragment"
-        android:label="SearchFragment" />
+
     <fragment
         android:id="@+id/pagingFragment"
         android:name="com.example.anggorobenolukito.ui.PagingFragment"
-        android:label="PagingFragment" />
+        android:label="PagingFragment" >
+        <action
+            android:id="@+id/action_pagingFragment_to_detailUserFragment"
+            app:destination="@id/detailUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailUserFragment"
+        android:name="com.example.anggorobenolukito.ui.DetailUserFragment"
+        android:label="DetailUserFragment" />
 </navigation>

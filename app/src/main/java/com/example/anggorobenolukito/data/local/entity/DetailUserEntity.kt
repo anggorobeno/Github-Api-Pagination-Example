@@ -2,6 +2,7 @@ package com.example.anggorobenolukito.data.local.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "detail_user_table")
@@ -15,12 +16,13 @@ data class DetailUserEntity(
 
     val followingUrl: String? = null,
 
-    val twitterUsername: Any? = null,
+    val twitterUsername: String? = null,
 
-    val bio: Any? = null,
+    val bio: String? = null,
 
     val createdAt: String? = null,
 
+    @ColumnInfo(name = "username")
     val login: String? = null,
 
     val type: String? = null,
@@ -33,19 +35,20 @@ data class DetailUserEntity(
 
     val siteAdmin: Boolean? = null,
 
-    val company: Any? = null,
+    val company: String? = null,
 
+    @PrimaryKey
     val id: Int? = null,
 
     val publicRepos: Int? = null,
 
     val gravatarId: String? = null,
 
-    val email: Any? = null,
+    val email: String? = null,
 
     val organizationsUrl: String? = null,
 
-    val hireable: Any? = null,
+    val hireable: Boolean? = null,
 
     val starredUrl: String? = null,
 
@@ -69,7 +72,7 @@ data class DetailUserEntity(
 
     val name: String? = null,
 
-    val location: Any? = null,
+    val location: String? = null,
 
     val nodeId: String? = null
 )

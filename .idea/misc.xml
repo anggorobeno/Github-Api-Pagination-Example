@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/AnggoroBenoLukito/app/src/main/res/drawable-v24/bg_photo.xml" value="0.19479166666666667" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/AnggoroBenoLukito/app/src/main/res/drawable-v24/bg_rounded_corner.xml" value="0.19479166666666667" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/AnggoroBenoLukito/app/src/main/res/drawable-v24/ic_back_arrow.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/AnggoroBenoLukito/app/src/main/res/drawable/baseline_search_black_24dp.xml" value="0.3494791666666667" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/AnggoroBenoLukito/app/src/main/res/drawable/bg_article.xml" value="0.3494791666666667" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/AnggoroBenoLukito/app/src/main/res/drawable/bg_search.xml" value="0.3494791666666667" />
@@ -10,6 +13,7 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/AnggoroBenoLukito/app/src/main/res/drawable/ic_favorite.xml" value="0.3494791666666667" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/AnggoroBenoLukito/app/src/main/res/drawable/ic_search.xml" value="0.3494791666666667" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/AnggoroBenoLukito/app/src/main/res/layout/activity_main.xml" value="0.22192028985507245" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/AnggoroBenoLukito/app/src/main/res/layout/fragment_detail_user.xml" value="0.21331521739130435" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/AnggoroBenoLukito/app/src/main/res/layout/fragment_paging.xml" value="0.41190765492102066" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/AnggoroBenoLukito/app/src/main/res/layout/fragment_search.xml" value="0.18" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/AnggoroBenoLukito/app/src/main/res/layout/item_list_user.xml" value="0.25" />
