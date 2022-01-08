@@ -34,23 +34,32 @@ class Repository @Inject constructor(
         ).liveData
     }
 
-    fun getDetailUser(username: String) = object : NetworkBoundResource<DetailUserEntity,DetailUserResponse>(appExecutors){
-        override fun loadFromDB(): LiveData<DetailUserEntity> {
-            return localDataSource.getDetailUser(username)
-        }
+    fun getDetailUser(username: String) =
+        object : NetworkBoundResource<DetailUserEntity, DetailUserResponse>(appExecutors) {
+            override fun loadFromDB(): LiveData<DetailUserEntity> {
+                return localDataSource.getDetailUser(username)
+            }
 
-        override fun shouldFetch(data: DetailUserEntity?): Boolean {
-            return data == null
+            override fun shouldFetch(data: DetailUserEntity?): Boolean {
+                return data == null
 
-        }
+            }
 
-        override fun createCall(): LiveData<ApiResponse<DetailUserResponse>> {
-            return remoteDataSource.getDetailUser(username)
-        }
+            override fun createCall(): LiveData<ApiResponse<DetailUserResponse>> {
+                return remoteDataSource.getDetailUser(username)
+            }
 
-        override fun saveCallResult(data: DetailUserResponse) {
-            val user = DataMapper.mapDetailResponseToEntities(data)
-            localDataSource.insertDetailUser(user)
-        }
-    }.asLiveData()
+            override fun saveCallResult(data: DetailUserResponse) {
+                val user = DataMapper.mapDetailResponseToEntities(data)
+                localDataSource.insertDetailUser(user)
+            }
+        }.asLiveData()
+
+    fun setFavouriteUser(data: DetailUserEntity, state: Boolean) {
+        appExecutors.diskIO().execute { localDataSource.setFavouriteUser(data, state) }
+    }
+
+    fun getFavouriteUser(): LiveData<List<DetailUserEntity>> {
+        return localDataSource.getFavouriteUser()
+    }
 }

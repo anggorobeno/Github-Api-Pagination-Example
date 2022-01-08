@@ -1,10 +1,7 @@
 package com.example.anggorobenolukito.data.local.room
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.anggorobenolukito.data.local.entity.DetailUserEntity
 
 @Dao
@@ -14,4 +11,11 @@ interface GithubDao {
 
     @Query("SELECT * FROM detail_user_table WHERE username = :username")
     fun getDetailUser(username : String) : LiveData<DetailUserEntity>
+
+    @Query("SELECT * FROM detail_user_table WHERE favourite = 1")
+    fun getFavouriteUer() : LiveData<List<DetailUserEntity>>
+
+    @Update
+    fun updateUser(data: DetailUserEntity)
+
 }

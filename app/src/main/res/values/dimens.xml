@@ -17,4 +17,13 @@
     <dimen name="dimens_150">150dp</dimen>
     <dimen name="dimens_10">10dp</dimen>
     <dimen name="dimens_56">56dp</dimen>
+    <dimen name="dimens_28">28dp</dimen>
+    <dimen name="font_26">26sp</dimen>
+    <dimen name="font_22">22sp</dimen>
+    <dimen name="dimens_2">2dp</dimen>
+    <dimen name="dimens_60">60dp</dimen>
+    <dimen name="dimens_32">32dp</dimen>
+    <dimen name="dimens_30">30dp</dimen>
+    <dimen name="dimens_48">48dp</dimen>
+    <dimen name="dimens_38">38dp</dimen>
 </resources>

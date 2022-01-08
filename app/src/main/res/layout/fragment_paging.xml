@@ -25,7 +25,7 @@
 
 
     <TextView
-        android:id="@+id/tv_empty_state_article_desc"
+        android:id="@+id/tv_empty_state_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_regular"
@@ -34,7 +34,7 @@
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_empty_state_article"
+        app:layout_constraintTop_toBottomOf="@id/iv_empty_state"
         tools:visibility="visible" />
 
     <com.google.android.material.button.MaterialButton
@@ -45,7 +45,7 @@
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_empty_state_article_desc"
+        app:layout_constraintTop_toBottomOf="@+id/tv_empty_state_desc"
         tools:visibility="visible" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -60,7 +60,7 @@
         tools:listitem="@layout/item_list_user"
         tools:visibility="invisible" />
     <ImageView
-        android:id="@+id/iv_empty_state_article"
+        android:id="@+id/iv_empty_state"
         android:layout_width="@dimen/dimens_250"
         android:layout_height="@dimen/dimens_200"
         android:src="@drawable/ic_empty_state"
@@ -74,6 +74,7 @@
     <ProgressBar
         android:id="@+id/progress_circular"
         android:layout_width="wrap_content"
+        android:indeterminateDrawable="@drawable/custom_progress"
         android:layout_height="wrap_content"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"

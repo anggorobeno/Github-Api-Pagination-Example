@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "detail_user_table")
 data class DetailUserEntity(
     @ColumnInfo(name = "favourite")
-    val isFavourite: Boolean = false,
+    var isFavourite: Boolean = false,
 
     val gistsUrl: String? = null,
 

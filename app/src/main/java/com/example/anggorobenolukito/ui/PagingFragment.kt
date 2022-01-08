@@ -43,7 +43,7 @@ class PagingFragment : Fragment() {
         viewModel.user.observe(viewLifecycleOwner, {
             userAdapter.submitData(viewLifecycleOwner.lifecycle, it)
             binding.progressCircular.visibility = View.GONE
-            showRvArticle()
+            showRvUser()
         })
         userSearch()
         userAdapter.addLoadStateListener { combinedLoadStates ->
@@ -51,18 +51,17 @@ class PagingFragment : Fragment() {
                 // Default State
                 progressCircular.isVisible = combinedLoadStates.source.refresh is LoadState.Loading
                 rvUser.isVisible = combinedLoadStates.source.refresh is LoadState.NotLoading
-                tvEmptyStateArticleDesc.isVisible =
+                tvEmptyStateDesc.isVisible =
                     combinedLoadStates.source.refresh is LoadState.Error
-                tvEmptyStateArticleDesc.isVisible =
-                    combinedLoadStates.source.refresh is LoadState.Error
-                ivEmptyStateArticle.isVisible = combinedLoadStates.source.refresh is LoadState.Error
+                ivEmptyState.isVisible = combinedLoadStates.source.refresh is LoadState.Error
                 btnRetry.isVisible = combinedLoadStates.source.refresh is LoadState.Error
 
                 // No Internet Connection State
                 if (combinedLoadStates.source.refresh is LoadState.Error) {
+                    ivEmptyState.setImageResource(R.drawable.ic_failed)
                     rvUser.isVisible = false
-                    tvEmptyStateArticleDesc.text = getString(R.string.something_went_wrong)
-                    tvEmptyStateArticleDesc.isVisible = true
+                    tvEmptyStateDesc.text = getString(R.string.something_went_wrong)
+                    tvEmptyStateDesc.isVisible = true
                     btnRetry.isVisible = true
                 }
                 // Empty State Result
@@ -70,9 +69,9 @@ class PagingFragment : Fragment() {
                     && combinedLoadStates.append.endOfPaginationReached && userAdapter.itemCount < 1
                 ) {
                     rvUser.isVisible = false
-                    ivEmptyStateArticle.isVisible = true
-                    tvEmptyStateArticleDesc.text = getString(R.string.no_user_found)
-                    tvEmptyStateArticleDesc.isVisible = true
+                    ivEmptyState.isVisible = true
+                    tvEmptyStateDesc.text = getString(R.string.no_user_found)
+                    tvEmptyStateDesc.isVisible = true
                 }
             }
 
@@ -80,7 +79,7 @@ class PagingFragment : Fragment() {
         }
     }
 
-    private fun showRvArticle() {
+    private fun showRvUser() {
         with(binding.rvUser) {
             this.layoutManager = LinearLayoutManager(context)
             this.setHasFixedSize(true)

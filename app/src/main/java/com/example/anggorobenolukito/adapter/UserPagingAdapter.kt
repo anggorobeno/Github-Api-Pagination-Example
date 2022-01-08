@@ -28,11 +28,11 @@ class UserPagingAdapter : PagingDataAdapter<ItemsItem, UserPagingAdapter.ViewHol
         if (user != null) {
             holder.bind(user)
         }
-        holder.itemView.setOnClickListener {
-            if (user != null) {
-                onItemClickCallback.onItemClicked(user)
-            }
-        }
+//        holder.itemView.setOnClickListener {
+//            if (user != null) {
+//                onItemClickCallback.onItemClicked(user)
+//            }
+//        }
 
 
     }
@@ -47,6 +47,9 @@ class UserPagingAdapter : PagingDataAdapter<ItemsItem, UserPagingAdapter.ViewHol
                     .into(ivAvatar)
                 tvUserType.text = data.type
                 tvUsername.text = data.login
+                root.setOnClickListener {
+                    onItemClickCallback.onItemClicked(data)
+                }
             }
         }
 

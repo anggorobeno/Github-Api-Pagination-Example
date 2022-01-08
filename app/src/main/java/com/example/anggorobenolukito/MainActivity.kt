@@ -3,6 +3,7 @@ package com.example.anggorobenolukito
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.anggorobenolukito.databinding.ActivityMainBinding
@@ -21,5 +22,9 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         val navView: BottomNavigationView? = binding?.bottomNavigationView
         navView?.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            navView?.isVisible = destination.id != R.id.splashFragment
+
+        }
     }
 }

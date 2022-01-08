@@ -9,18 +9,18 @@ import javax.inject.Singleton
 
 @Singleton
 @Database(entities = [DetailUserEntity::class],version = 1,exportSchema = false)
-abstract class DB : RoomDatabase() {
+abstract class GithubDB : RoomDatabase() {
     abstract fun dao(): GithubDao
     companion object {
 
         @Volatile
-        private var INSTANCE: DB? = null
+        private var INSTANCE: GithubDB? = null
 
-        fun getInstance(context: Context): DB =
+        fun getInstance(context: Context): GithubDB =
             INSTANCE ?: synchronized(this) {
                 Room.databaseBuilder(
                     context.applicationContext,
-                    DB::class.java,
+                    GithubDB::class.java,
                     "Academies.db"
                 ).build().apply {
                     INSTANCE = this

@@ -1,106 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/bg_article"
-    android:padding="16dp">
+    android:background="#E8D878"
 
+    >
 
+    <!-- Background -->
 
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/detail_avatar"
-        android:layout_width="@dimen/dimens_150"
-        android:layout_height="@dimen/dimens_150"
-        android:layout_centerHorizontal="true"
-        app:riv_corner_radius="@dimen/dimens_12" />
-    <TextView
-        android:id="@+id/detail_name"
+    <!-- Icon Back Background -->
+
+    <View
+        android:id="@+id/view_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_0"
+        android:background="@drawable/background"
+        android:layout_marginTop="@dimen/dimens_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_avatar"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/ic_shape"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimens_0"
-        android:layout_marginTop="@dimen/dimens_20"
-        android:layout_below="@id/detail_avatar"
-        tools:text="@string/name"
-        android:textSize="@dimen/font_24"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"/>
-    <TextView
-        android:id="@+id/detail_username"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white" />
+
+    <!-- Icon Back -->
+    <ImageButton
+        android:id="@+id/ic_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/detail_name"
-        android:layout_marginStart="@dimen/dimens_0"
-        android:layout_marginTop="@dimen/dimens_10"
-        android:ellipsize="end"
+        android:layout_marginStart="@dimen/dimens_16"
+        android:layout_marginTop="@dimen/dimens_48"
+        android:background="@drawable/bg_back_button"
+        app:srcCompat="@drawable/ic_back_arrow"
+        android:padding="@dimen/dimens_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/black" />
+
+    <!-- Pokemon Name -->
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimens_16"
+        android:layout_marginTop="@dimen/dimens_28"
+        android:fontFamily="@font/poppin_semi_bold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ic_back"
+        tools:text="@string/dummy_username" />
+
+    <!-- Pokemon Id -->
+    <TextView
+        android:id="@+id/tv_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimens_38"
+        android:layout_marginEnd="@dimen/dimens_16"
+        android:fontFamily="@font/poppin_semi_bold"
+        android:textColor="@color/black"
         android:textSize="@dimen/font_18"
-        android:maxLines="3"
-        tools:text="@string/username"
-        android:layout_centerHorizontal="true"/>
-    <TextView
-        android:id="@+id/detail_repository"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/dimens_20"
-        android:layout_marginTop="@dimen/dimens_10"
-        android:layout_toStartOf="@id/detail_followers"
-        android:ellipsize="end"
-        android:maxLines="3"
-        tools:text="@string/repository"
-        android:layout_alignBaseline="@id/detail_followers"/>
-    <TextView
-        android:id="@+id/detail_followers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/detail_username"
-        android:layout_marginStart="@dimen/dimens_0"
-        android:layout_marginTop="@dimen/dimens_10"
-        android:ellipsize="end"
-        android:maxLines="3"
-        tools:text="@string/followers"
-        android:layout_centerHorizontal="true"/>
-    <TextView
-        android:id="@+id/detail_following"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimens_20"
-        android:layout_marginTop="@dimen/dimens_10"
-        android:layout_toEndOf="@id/detail_followers"
-        android:ellipsize="end"
-        android:maxLines="3"
-        tools:text="@string/following"
-        android:layout_alignBaseline="@id/detail_followers"/>
-    <TextView
-        android:id="@+id/detail_company"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/detail_followers"
-        android:layout_marginStart="@dimen/dimens_0"
-        android:layout_marginTop="@dimen/dimens_10"
-        android:ellipsize="end"
-        android:maxLines="3"
-        tools:text="@string/company"
-        android:layout_centerHorizontal="true"/>
-    <TextView
-        android:id="@+id/detail_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/detail_company"
-        android:layout_marginStart="@dimen/dimens_0"
-        android:layout_marginTop="@dimen/dimens_10"
-        android:ellipsize="end"
-        android:maxLines="3"
-        tools:text="@string/location"
-        android:layout_centerHorizontal="true"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ic_back"
+        tools:text="@string/dummy_type" />
 
+
+    <!-- User Avatar -->
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="@dimen/dimens_200"
+        android:layout_height="@dimen/dimens_200"
+        android:scaleType="fitXY"
+        app:riv_corner_radius="@dimen/dimens_12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/view_background"
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_name"
+        tools:src="@drawable/ic_launcher_background" />
+
+    <!-- User Followings -->
+    <TextView
+        android:id="@+id/tv_user_followings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimens_20"
+        android:fontFamily="@font/poppin_semi_bold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_22"
+        app:layout_constraintEnd_toStartOf="@id/view_line"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/view_background"
+        tools:text="@string/dummy_followings" />
+
+    <!-- Text Followings -->
+    <TextView
+        android:id="@+id/tv_followings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/following"
+        android:textColor="#9B9B9B"
+        android:textSize="@dimen/font_16"
+        app:layout_constraintEnd_toStartOf="@id/view_line"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_followings" />
+
+    <!-- Line -->
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="@dimen/dimens_2"
+        android:layout_height="@dimen/dimens_60"
+        android:layout_marginTop="@dimen/dimens_20"
+        android:background="@drawable/line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/view_background" />
+
+    <!-- User Followers -->
+    <TextView
+        android:id="@+id/tv_user_followers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimens_20"
+        android:fontFamily="@font/poppin_semi_bold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_22"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/view_line"
+        app:layout_constraintTop_toTopOf="@id/view_background"
+        tools:text="@string/dummy_followers" />
+
+    <!-- Text Followers -->
+    <TextView
+        android:id="@+id/tv_followers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/followers"
+        android:textColor="#9B9B9B"
+        android:textSize="@dimen/font_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/view_line"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_followers" />
+
+
+    <!-- Progress Bar -->
     <ProgressBar
-        android:id="@+id/progress_circular"
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:indeterminateDrawable="@drawable/custom_progress"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+<!--    Fab Favourite-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/detail_location"
-        android:layout_centerHorizontal="true"
-        android:visibility="gone"
-        tools:visibility="visible" />
+        android:layout_marginEnd="@dimen/dimens_32"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/view_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_followers"
+        app:layout_constraintVertical_bias="0.895"
+        app:srcCompat="@drawable/baseline_favorite_border_black_24dp"
+        android:focusable="true"
+        android:contentDescription="@string/fab_button_to_add_favourite" />
 
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,7 @@ package com.example.anggorobenolukito.di
 
 import android.content.Context
 import com.example.anggorobenolukito.data.local.room.GithubDao
-import com.example.anggorobenolukito.data.local.room.DB
+import com.example.anggorobenolukito.data.local.room.GithubDB
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,14 +16,14 @@ class DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext context: Context) : DB{
-        return DB.getInstance(context)
+    fun provideDatabase(@ApplicationContext context: Context) : GithubDB{
+        return GithubDB.getInstance(context)
     }
 
     @Provides
     @Singleton
-    fun provideDao(db: DB): GithubDao {
-        return db.dao()
+    fun provideDao(githubDb: GithubDB): GithubDao {
+        return githubDb.dao()
     }
 
 
