@@ -12,6 +12,10 @@
         android:label="PagingFragment" >
         <action
             android:id="@+id/action_pagingFragment_to_detailUserFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/detailUserFragment" />
     </fragment>
     <fragment
@@ -24,6 +28,10 @@
         android:label="FavouriteUserFragment" >
         <action
             android:id="@+id/action_favouriteUserFragment_to_detailUserFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/detailUserFragment" />
     </fragment>
     <fragment
@@ -33,6 +41,12 @@
         tools:layout="@layout/fragment_splash" >
         <action
             android:id="@+id/action_splashFragment_to_pagingFragment"
+            app:popUpTo="@id/splashFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpToInclusive="true"
             app:destination="@id/pagingFragment" />
     </fragment>
 </navigation>

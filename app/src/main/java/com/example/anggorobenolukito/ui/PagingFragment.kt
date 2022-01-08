@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -28,6 +30,7 @@ class PagingFragment : Fragment() {
     private val TAG = "Paging Fragment"
     private val viewModel: PagingViewModel by viewModels()
     private val userAdapter: UserPagingAdapter = UserPagingAdapter()
+    private var pressedTime: Long = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -77,6 +80,22 @@ class PagingFragment : Fragment() {
 
 
         }
+        backPressClose()
+
+    }
+    //Back press Close App
+
+    private fun backPressClose() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            // handle back event
+            if (pressedTime + 5000 > System.currentTimeMillis()) {
+                activity?.finishAndRemoveTask()
+            } else {
+                Toast.makeText(requireContext(), "Press back again to exit", Toast.LENGTH_SHORT)
+                    .show();
+            }
+            pressedTime = System.currentTimeMillis()
+        }
     }
 
     private fun showRvUser() {
@@ -90,11 +109,14 @@ class PagingFragment : Fragment() {
             binding.btnRetry.setOnClickListener {
                 userAdapter.retry()
             }
-            userAdapter.setOnItemCallback(object : UserPagingAdapter.OnItemClickCallback{
+            userAdapter.setOnItemCallback(object : UserPagingAdapter.OnItemClickCallback {
                 override fun onItemClicked(data: ItemsItem) {
                     val bundle = Bundle()
-                    bundle.putString(Constant.EXTRA_USER,data.login)
-                    findNavController().navigate(R.id.action_pagingFragment_to_detailUserFragment,bundle)
+                    bundle.putString(Constant.EXTRA_USER, data.login)
+                    findNavController().navigate(
+                        R.id.action_pagingFragment_to_detailUserFragment,
+                        bundle
+                    )
                 }
 
             })

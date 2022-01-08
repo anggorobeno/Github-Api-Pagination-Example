@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -24,6 +26,8 @@ class FavouriteUserFragment : Fragment() {
     private val TAG = "Favourite Fragment"
     private val viewModel: FavouriteUserViewModel by viewModels()
     private val userAdapter: FavouriteUserAdapter = FavouriteUserAdapter()
+    private var pressedTime: Long = 0
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,6 +40,20 @@ class FavouriteUserFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showFavouriteUser()
+        backPressClose()
+    }
+
+    private fun backPressClose() {
+        //Back press Close App
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            // handle back event
+            if (pressedTime + 5000 > System.currentTimeMillis()) {
+                activity?.finishAndRemoveTask()
+            } else {
+                Toast.makeText(requireContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
+            }
+            pressedTime = System.currentTimeMillis()
+        }
     }
 
     private fun showFavouriteUser() {
