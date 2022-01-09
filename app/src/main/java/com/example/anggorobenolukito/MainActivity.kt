@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView? = binding?.bottomNavigationView
         navView?.setupWithNavController(navController)
         setupActionBarWithNavController(navController)
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
             navView?.isVisible = destination.id != R.id.splashFragment
             if (destination.id == R.id.splashFragment || destination.id == R.id.userFragment || destination.id == R.id.favouriteUserFragment) {
