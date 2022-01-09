@@ -6,5 +6,6 @@ Pagination 3 Example using Github Api
 - MVVM
 - Coroutines
 - Hilt DI
+- Pagination with Paging 3 
 ## Info
 Develop branch may contains some bug and still in progress
