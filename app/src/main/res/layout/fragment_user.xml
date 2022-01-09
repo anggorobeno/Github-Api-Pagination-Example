@@ -23,11 +23,11 @@
         app:searchIcon="@drawable/ic_search" />
 
 
-
     <TextView
         android:id="@+id/tv_empty_state_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimens_8"
         android:fontFamily="@font/poppins_regular"
         android:textColor="@color/text_grey"
         android:textSize="@dimen/font_14"
@@ -42,6 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_retry"
+        app:cornerRadius="@dimen/dimens_16"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +59,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sv_users"
         tools:listitem="@layout/item_list_user"
-        tools:visibility="invisible" />
+        tools:visibility="visible" />
     <ImageView
         android:id="@+id/iv_empty_state"
         android:layout_width="@dimen/dimens_250"
@@ -70,11 +71,12 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+        tools:visibility="visible"
+        android:contentDescription="@string/empty_state_image" />
     <ProgressBar
         android:id="@+id/progress_circular"
         android:layout_width="wrap_content"
-        android:indeterminateDrawable="@drawable/custom_progress"
+        android:indeterminateDrawable="@drawable/custom_progress_bar_loading"
         android:layout_height="wrap_content"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"

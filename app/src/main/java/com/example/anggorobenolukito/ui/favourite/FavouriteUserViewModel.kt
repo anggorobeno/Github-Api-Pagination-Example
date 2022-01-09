@@ -1,6 +1,5 @@
-package com.example.anggorobenolukito.ui
+package com.example.anggorobenolukito.ui.favourite
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.anggorobenolukito.data.Repository
@@ -15,8 +14,13 @@ class FavouriteUserViewModel @Inject constructor(private val repository: Reposit
     }
 
     fun searchFavouriteUser(query: String): LiveData<List<DetailUserEntity>> {
-        Log.d("TAG", "searchFavouriteUser: $query ")
         return repository.searchFavouriteUser(query)
     }
 
+    fun setFavouriteUser(data: DetailUserEntity) {
+        val newState = !data.isFavourite
+        repository.setFavouriteUser(data, newState)
+
+    }
 }
+

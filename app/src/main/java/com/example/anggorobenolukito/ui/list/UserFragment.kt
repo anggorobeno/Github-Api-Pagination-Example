@@ -1,4 +1,4 @@
-package com.example.anggorobenolukito.ui
+package com.example.anggorobenolukito.ui.list
 
 import android.app.SearchManager
 import android.content.Context
@@ -16,19 +16,19 @@ import androidx.navigation.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.anggorobenolukito.R
-import com.example.anggorobenolukito.adapter.UserLoadStateAdapter
-import com.example.anggorobenolukito.adapter.UserPagingAdapter
 import com.example.anggorobenolukito.data.remote.response.ItemsItem
-import com.example.anggorobenolukito.databinding.FragmentPagingBinding
+import com.example.anggorobenolukito.databinding.FragmentUserBinding
+import com.example.anggorobenolukito.ui.adapter.UserLoadStateAdapter
+import com.example.anggorobenolukito.ui.adapter.UserPagingAdapter
 import com.example.anggorobenolukito.utils.Constant
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PagingFragment : Fragment() {
-    private var _binding: FragmentPagingBinding? = null
+class UserFragment : Fragment() {
+    private var _binding: FragmentUserBinding? = null
     private val binding get() = _binding!!
     private val TAG = "Paging Fragment"
-    private val viewModel: PagingViewModel by viewModels()
+    private val viewModel: UserViewModel by viewModels()
     private val userAdapter: UserPagingAdapter = UserPagingAdapter()
     private var pressedTime: Long = 0
 
@@ -37,7 +37,7 @@ class PagingFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPagingBinding.inflate(inflater, container, false)
+        _binding = FragmentUserBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -91,7 +91,11 @@ class PagingFragment : Fragment() {
             if (pressedTime + 5000 > System.currentTimeMillis()) {
                 activity?.finishAndRemoveTask()
             } else {
-                Toast.makeText(requireContext(), "Press back again to exit", Toast.LENGTH_SHORT)
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.back_to_exit),
+                    Toast.LENGTH_SHORT
+                )
                     .show();
             }
             pressedTime = System.currentTimeMillis()
@@ -138,8 +142,6 @@ class PagingFragment : Fragment() {
                     binding.rvUser.scrollToPosition(0)
                     viewModel.searchUsers(query)
                     svUsers.clearFocus()
-
-
                 }
                 return true
             }

@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             navView?.isVisible = destination.id != R.id.splashFragment
-            if (destination.id == R.id.splashFragment || destination.id == R.id.pagingFragment || destination.id == R.id.favouriteUserFragment) {
+            if (destination.id == R.id.splashFragment || destination.id == R.id.userFragment || destination.id == R.id.favouriteUserFragment) {
                 window.statusBarColor = Color.TRANSPARENT
                 setLightStatusBar(true)
             } else {

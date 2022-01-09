@@ -1,4 +1,4 @@
-package com.example.anggorobenolukito.ui
+package com.example.anggorobenolukito.ui.list
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -6,12 +6,11 @@ import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import com.example.anggorobenolukito.data.Repository
-import com.example.anggorobenolukito.data.remote.response.ItemsItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class PagingViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
+class UserViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
     private val currentQuery = MutableLiveData(DEFAULT_QUERY)
 

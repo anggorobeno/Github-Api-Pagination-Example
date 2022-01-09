@@ -1,24 +1,41 @@
-package com.example.anggorobenolukito.adapter
+package com.example.anggorobenolukito.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.anggorobenolukito.data.local.entity.DetailUserEntity
 import com.example.anggorobenolukito.databinding.ItemListUserBinding
 
-class FavouriteUserAdapter : RecyclerView.Adapter<FavouriteUserAdapter.ViewHolder>() {
-    private val listFavouriteUser = ArrayList<DetailUserEntity>()
+class FavouriteUserAdapter : ListAdapter<DetailUserEntity, FavouriteUserAdapter.ViewHolder>(
+    USER_DIFF
+) {
     lateinit var onItemClickCallback: OnItemClickCallback
     fun setOnItemClick(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    fun setFavouriteUser(data: List<DetailUserEntity>) {
-        listFavouriteUser.clear()
-        listFavouriteUser.addAll(data)
-        notifyDataSetChanged()
+    fun getSwipedData(swipedPosition: Int): DetailUserEntity? = getItem(swipedPosition)
 
+    companion object {
+        private val USER_DIFF = object : DiffUtil.ItemCallback<DetailUserEntity>() {
+            override fun areItemsTheSame(
+                oldItem: DetailUserEntity,
+                newItem: DetailUserEntity
+            ): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(
+                oldItem: DetailUserEntity,
+                newItem: DetailUserEntity
+            ): Boolean {
+                return oldItem == newItem
+            }
+
+        }
     }
 
     inner class ViewHolder(private val binding: ItemListUserBinding) :
@@ -45,16 +62,10 @@ class FavouriteUserAdapter : RecyclerView.Adapter<FavouriteUserAdapter.ViewHolde
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val user = listFavouriteUser[position]
+        val user = getItem(position)
         holder.bind(user)
-//        holder.itemView.setOnClickListener {
-//            onItemClickCallback.onItemClicked(user)
-//        }
     }
 
-    override fun getItemCount(): Int {
-        return listFavouriteUser.size
-    }
 
     interface OnItemClickCallback {
         fun onItemClicked(data: DetailUserEntity)
