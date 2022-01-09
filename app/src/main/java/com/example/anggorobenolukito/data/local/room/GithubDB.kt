@@ -8,23 +8,8 @@ import com.example.anggorobenolukito.data.local.entity.DetailUserEntity
 import javax.inject.Singleton
 
 @Singleton
-@Database(entities = [DetailUserEntity::class],version = 1,exportSchema = false)
+@Database(entities = [DetailUserEntity::class], version = 1, exportSchema = false)
 abstract class GithubDB : RoomDatabase() {
     abstract fun dao(): GithubDao
-    companion object {
 
-        @Volatile
-        private var INSTANCE: GithubDB? = null
-
-        fun getInstance(context: Context): GithubDB =
-            INSTANCE ?: synchronized(this) {
-                Room.databaseBuilder(
-                    context.applicationContext,
-                    GithubDB::class.java,
-                    "Academies.db"
-                ).build().apply {
-                    INSTANCE = this
-                }
-            }
-    }
 }
