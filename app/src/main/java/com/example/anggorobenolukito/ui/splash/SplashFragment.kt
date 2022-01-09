@@ -1,4 +1,4 @@
-package com.example.anggorobenolukito.ui
+package com.example.anggorobenolukito.ui.splash
 
 import android.os.Bundle
 import android.os.Handler

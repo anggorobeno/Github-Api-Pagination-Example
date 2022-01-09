@@ -21,4 +21,13 @@
     <string name="dummy_followers">25555</string>
     <string name="dummy_followings">255435</string>
     <string name="app_logo">github_logo</string>
+    <string name="back_to_exit">Press back again to exit</string>
+    <string name="search_user">Search User</string>
+    <string name="favourite_user">Favourite User</string>
+    <string name="user_avatar_image">User Avatar Image</string>
+    <string name="empty_state_image">Empty State Image</string>
+    <string name="powered_by_github_api">Powered By Github Api</string>
+    <string name="message_undo">Cancel delete?</string>
+    <string name="message_ok">OK</string>
+    <string name="no_favourite_user">No Favourite User</string>
 </resources>

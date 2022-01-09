@@ -1,4 +1,4 @@
-package com.example.anggorobenolukito.ui
+package com.example.anggorobenolukito.ui.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -77,7 +77,7 @@ class DetailUserFragment : Fragment() {
         if (state) {
             binding.floatingActionButton.setImageResource(R.drawable.ic_favorite)
         } else {
-            binding.floatingActionButton.setImageResource(R.drawable.baseline_favorite_border_black_24dp)
+            binding.floatingActionButton.setImageResource(R.drawable.ic_favourite_off)
         }
         binding.floatingActionButton.setOnClickListener {
             viewModel.setFavouriteUser()
@@ -112,18 +112,11 @@ class DetailUserFragment : Fragment() {
                                     .load(detailUser.data.avatarUrl)
                                     .into(ivAvatar)
                                 tvUserName.text = detailUser.data.login
-//                            detailName.text = detailUser.data?.name
-//                            detailRepository.text = detailUser.data?.publicRepos.toString()
-//                            detailCompany.text = detailUser.data?.company
                                 tvType.text = detailUser.data.type
                                 tvUserFollowers.text = detailUser.data.followers.toString()
                                 tvUserFollowings.text = detailUser.data.following.toString()
-
-
                             }
                         }
-
-
                     }
                     Status.ERROR -> {
                         binding.progressBar.visibility = View.GONE
@@ -133,11 +126,9 @@ class DetailUserFragment : Fragment() {
                                 it, Snackbar.LENGTH_SHORT
                             ).show()
                         }
-
                     }
                     Status.LOADING -> {
                         binding.progressBar.visibility = View.VISIBLE
-
                     }
                 }
             }

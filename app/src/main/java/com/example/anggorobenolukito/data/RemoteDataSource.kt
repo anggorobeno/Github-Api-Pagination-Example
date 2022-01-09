@@ -57,6 +57,7 @@ class RemoteDataSource @Inject constructor(
 
             override fun onFailure(call: Call<DetailUserResponse>, t: Throwable) {
 
+
             }
 
         })

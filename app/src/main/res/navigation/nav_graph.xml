@@ -7,8 +7,8 @@
 
 
     <fragment
-        android:id="@+id/pagingFragment"
-        android:name="com.example.anggorobenolukito.ui.PagingFragment"
+        android:id="@+id/userFragment"
+        android:name="com.example.anggorobenolukito.ui.list.UserFragment"
         android:label="PagingFragment" >
         <action
             android:id="@+id/action_pagingFragment_to_detailUserFragment"
@@ -20,11 +20,11 @@
     </fragment>
     <fragment
         android:id="@+id/detailUserFragment"
-        android:name="com.example.anggorobenolukito.ui.DetailUserFragment"
+        android:name="com.example.anggorobenolukito.ui.detail.DetailUserFragment"
         android:label="DetailUserFragment" />
     <fragment
         android:id="@+id/favouriteUserFragment"
-        android:name="com.example.anggorobenolukito.ui.FavouriteUserFragment"
+        android:name="com.example.anggorobenolukito.ui.favourite.FavouriteUserFragment"
         android:label="FavouriteUserFragment" >
         <action
             android:id="@+id/action_favouriteUserFragment_to_detailUserFragment"
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.anggorobenolukito.ui.SplashFragment"
+        android:name="com.example.anggorobenolukito.ui.splash.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
@@ -47,6 +47,6 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             app:popUpToInclusive="true"
-            app:destination="@id/pagingFragment" />
+            app:destination="@id/userFragment" />
     </fragment>
 </navigation>

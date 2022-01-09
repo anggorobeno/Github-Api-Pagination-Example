@@ -84,8 +84,7 @@ object DataMapper {
         users.add(user)
         return users
 
-        }
-
+    }
 
 
     fun mapDetailResponseToEntities(data: DetailUserResponse): List<DetailUserEntity> {

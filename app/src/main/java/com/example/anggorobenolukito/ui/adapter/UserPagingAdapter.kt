@@ -1,4 +1,4 @@
-package com.example.anggorobenolukito.adapter
+package com.example.anggorobenolukito.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -28,13 +28,6 @@ class UserPagingAdapter : PagingDataAdapter<ItemsItem, UserPagingAdapter.ViewHol
         if (user != null) {
             holder.bind(user)
         }
-//        holder.itemView.setOnClickListener {
-//            if (user != null) {
-//                onItemClickCallback.onItemClicked(user)
-//            }
-//        }
-
-
     }
 
     inner class ViewHolder(private val binding: ItemListUserBinding) :
@@ -43,7 +36,7 @@ class UserPagingAdapter : PagingDataAdapter<ItemsItem, UserPagingAdapter.ViewHol
             with(binding) {
                 Glide.with(itemView.context)
                     .load(data.avatarUrl)
-                    .error(R.drawable.baseline_error_outline_black_24dp)
+                    .error(R.drawable.ic_failed)
                     .into(ivAvatar)
                 tvUserType.text = data.type
                 tvUsername.text = data.login
@@ -52,8 +45,6 @@ class UserPagingAdapter : PagingDataAdapter<ItemsItem, UserPagingAdapter.ViewHol
                 }
             }
         }
-
-
     }
 
 
