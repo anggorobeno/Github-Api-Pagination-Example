@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/searchFragment2"
+        android:id="@+id/pagingFragment"
         android:title="Search User"
         android:icon="@drawable/baseline_search_black_24dp"/>
     <item
-        android:id="@+id/pagingFragment"
+        android:id="@+id/favouriteUserFragment"
         android:title="Favourite User"
         android:icon="@drawable/ic_favorite"/>
 

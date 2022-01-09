@@ -7,4 +7,18 @@
     <string name="btn_retry">Retry</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="no_user_found">No User Found</string>
+    <string name="name">name</string>
+    <string name="username">username</string>
+    <string name="repository">user_repository</string>
+    <string name="followers">Followers</string>
+    <string name="following">Followings</string>
+    <string name="company">user_company</string>
+    <string name="location">user_location</string>
+    <string name="add_user_favourite">Added to Favourite</string>
+    <string name="delete_user_favourite">Deleted from Favourite</string>
+    <string name="fab_button_to_add_favourite">fab button to add favourite</string>
+    <string name="admin">Admin</string>
+    <string name="dummy_followers">25555</string>
+    <string name="dummy_followings">255435</string>
+    <string name="app_logo">github_logo</string>
 </resources>

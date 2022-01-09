@@ -6,7 +6,6 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.anggorobenolukito.R
 import com.example.anggorobenolukito.data.remote.response.ItemsItem
 import com.example.anggorobenolukito.databinding.ItemListUserBinding
@@ -18,11 +17,22 @@ class UserPagingAdapter : PagingDataAdapter<ItemsItem, UserPagingAdapter.ViewHol
         return ViewHolder(binding)
     }
 
+    lateinit var onItemClickCallback: OnItemClickCallback
+    fun setOnItemCallback(callback: OnItemClickCallback) {
+        this.onItemClickCallback = callback
+
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val user = getItem(position)
         if (user != null) {
             holder.bind(user)
         }
+//        holder.itemView.setOnClickListener {
+//            if (user != null) {
+//                onItemClickCallback.onItemClicked(user)
+//            }
+//        }
 
 
     }
@@ -37,6 +47,9 @@ class UserPagingAdapter : PagingDataAdapter<ItemsItem, UserPagingAdapter.ViewHol
                     .into(ivAvatar)
                 tvUserType.text = data.type
                 tvUsername.text = data.login
+                root.setOnClickListener {
+                    onItemClickCallback.onItemClicked(data)
+                }
             }
         }
 
@@ -55,6 +68,10 @@ class UserPagingAdapter : PagingDataAdapter<ItemsItem, UserPagingAdapter.ViewHol
             }
 
         }
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: ItemsItem)
     }
 
 }

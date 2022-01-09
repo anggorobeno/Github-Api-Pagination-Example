@@ -3,24 +3,24 @@ package com.example.anggorobenolukito.ui
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.paging.LoadState
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.anggorobenolukito.R
-import com.example.anggorobenolukito.adapter.UserAdapter
 import com.example.anggorobenolukito.adapter.UserLoadStateAdapter
 import com.example.anggorobenolukito.adapter.UserPagingAdapter
+import com.example.anggorobenolukito.data.remote.response.ItemsItem
 import com.example.anggorobenolukito.databinding.FragmentPagingBinding
-import com.example.anggorobenolukito.databinding.FragmentSearchBinding
-import com.google.android.material.snackbar.Snackbar
+import com.example.anggorobenolukito.utils.Constant
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,6 +30,7 @@ class PagingFragment : Fragment() {
     private val TAG = "Paging Fragment"
     private val viewModel: PagingViewModel by viewModels()
     private val userAdapter: UserPagingAdapter = UserPagingAdapter()
+    private var pressedTime: Long = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +46,7 @@ class PagingFragment : Fragment() {
         viewModel.user.observe(viewLifecycleOwner, {
             userAdapter.submitData(viewLifecycleOwner.lifecycle, it)
             binding.progressCircular.visibility = View.GONE
-            showRvArticle()
+            showRvUser()
         })
         userSearch()
         userAdapter.addLoadStateListener { combinedLoadStates ->
@@ -53,18 +54,17 @@ class PagingFragment : Fragment() {
                 // Default State
                 progressCircular.isVisible = combinedLoadStates.source.refresh is LoadState.Loading
                 rvUser.isVisible = combinedLoadStates.source.refresh is LoadState.NotLoading
-                tvEmptyStateArticleDesc.isVisible =
+                tvEmptyStateDesc.isVisible =
                     combinedLoadStates.source.refresh is LoadState.Error
-                tvEmptyStateArticleDesc.isVisible =
-                    combinedLoadStates.source.refresh is LoadState.Error
-                ivEmptyStateArticle.isVisible = combinedLoadStates.source.refresh is LoadState.Error
+                ivEmptyState.isVisible = combinedLoadStates.source.refresh is LoadState.Error
                 btnRetry.isVisible = combinedLoadStates.source.refresh is LoadState.Error
 
                 // No Internet Connection State
                 if (combinedLoadStates.source.refresh is LoadState.Error) {
+                    ivEmptyState.setImageResource(R.drawable.ic_failed)
                     rvUser.isVisible = false
-                    tvEmptyStateArticleDesc.text = getString(R.string.something_went_wrong)
-                    tvEmptyStateArticleDesc.isVisible = true
+                    tvEmptyStateDesc.text = getString(R.string.something_went_wrong)
+                    tvEmptyStateDesc.isVisible = true
                     btnRetry.isVisible = true
                 }
                 // Empty State Result
@@ -72,17 +72,33 @@ class PagingFragment : Fragment() {
                     && combinedLoadStates.append.endOfPaginationReached && userAdapter.itemCount < 1
                 ) {
                     rvUser.isVisible = false
-                    ivEmptyStateArticle.isVisible = true
-                    tvEmptyStateArticleDesc.text = getString(R.string.no_user_found)
-                    tvEmptyStateArticleDesc.isVisible = true
+                    ivEmptyState.isVisible = true
+                    tvEmptyStateDesc.text = getString(R.string.no_user_found)
+                    tvEmptyStateDesc.isVisible = true
                 }
             }
 
 
         }
+        backPressClose()
+
+    }
+    //Back press Close App
+
+    private fun backPressClose() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            // handle back event
+            if (pressedTime + 5000 > System.currentTimeMillis()) {
+                activity?.finishAndRemoveTask()
+            } else {
+                Toast.makeText(requireContext(), "Press back again to exit", Toast.LENGTH_SHORT)
+                    .show();
+            }
+            pressedTime = System.currentTimeMillis()
+        }
     }
 
-    private fun showRvArticle() {
+    private fun showRvUser() {
         with(binding.rvUser) {
             this.layoutManager = LinearLayoutManager(context)
             this.setHasFixedSize(true)
@@ -93,6 +109,17 @@ class PagingFragment : Fragment() {
             binding.btnRetry.setOnClickListener {
                 userAdapter.retry()
             }
+            userAdapter.setOnItemCallback(object : UserPagingAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: ItemsItem) {
+                    val bundle = Bundle()
+                    bundle.putString(Constant.EXTRA_USER, data.login)
+                    findNavController().navigate(
+                        R.id.action_pagingFragment_to_detailUserFragment,
+                        bundle
+                    )
+                }
+
+            })
         }
     }
 

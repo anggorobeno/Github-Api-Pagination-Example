@@ -1,15 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/searchFragment2">
+    app:startDestination="@id/splashFragment">
 
-    <fragment
-        android:id="@+id/searchFragment2"
-        android:name="com.example.anggorobenolukito.ui.SearchFragment"
-        android:label="SearchFragment" />
+
     <fragment
         android:id="@+id/pagingFragment"
         android:name="com.example.anggorobenolukito.ui.PagingFragment"
-        android:label="PagingFragment" />
+        android:label="PagingFragment" >
+        <action
+            android:id="@+id/action_pagingFragment_to_detailUserFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/detailUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailUserFragment"
+        android:name="com.example.anggorobenolukito.ui.DetailUserFragment"
+        android:label="DetailUserFragment" />
+    <fragment
+        android:id="@+id/favouriteUserFragment"
+        android:name="com.example.anggorobenolukito.ui.FavouriteUserFragment"
+        android:label="FavouriteUserFragment" >
+        <action
+            android:id="@+id/action_favouriteUserFragment_to_detailUserFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/detailUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.anggorobenolukito.ui.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_pagingFragment"
+            app:popUpTo="@id/splashFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpToInclusive="true"
+            app:destination="@id/pagingFragment" />
+    </fragment>
 </navigation>

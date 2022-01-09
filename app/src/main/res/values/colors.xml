@@ -13,4 +13,7 @@
     <color name="article">#FAFAFA</color>
     <color name="text_black">#14142B</color>
     <color name="text_grey">#6A6A6A</color>
+    <color name="primary_color">#E8D878</color>
+    <color name="secondary_color">#7888e8</color>
+    <color name="status_bar_color">#e4d262</color>
 </resources>
