@@ -1,6 +1,7 @@
 package com.example.anggorobenolukito.di
 
 import android.content.Context
+import androidx.room.Room
 import com.example.anggorobenolukito.data.local.room.GithubDao
 import com.example.anggorobenolukito.data.local.room.GithubDB
 import dagger.Module
@@ -16,8 +17,12 @@ class DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext context: Context) : GithubDB{
-        return GithubDB.getInstance(context)
+    fun provideDatabase(@ApplicationContext context: Context): GithubDB {
+        return Room.databaseBuilder(
+            context,
+            GithubDB::class.java,
+            "Github.db"
+        ).fallbackToDestructiveMigration().build()
     }
 
     @Provides

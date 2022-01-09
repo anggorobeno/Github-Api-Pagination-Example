@@ -1,5 +1,7 @@
 package com.example.anggorobenolukito.ui
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -41,6 +44,44 @@ class FavouriteUserFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         showFavouriteUser()
         backPressClose()
+        favouriteSearch()
+    }
+
+    private fun favouriteSearch() {
+        val searchManager = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val svUsers = binding.svUsers
+        svUsers.setSearchableInfo(searchManager.getSearchableInfo(requireActivity().componentName))
+        svUsers.isSubmitButtonEnabled = false
+        svUsers.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+//                if (query != null) {
+//                    binding.rvUser.scrollToPosition(0)
+//                    val searchQuery = "$query"
+//                    viewModel.searchFavouriteUser(query).observe(viewLifecycleOwner, {
+//                        userAdapter.setFavouriteUser(it)
+//                        showRvUser()
+//                    })
+//                    Log.d(TAG, "onQueryTextSubmit: $searchQuery")
+//                    svUsers.clearFocus()
+//                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    binding.rvUser.scrollToPosition(0)
+                    val searchQuery = "$newText"
+                    viewModel.searchFavouriteUser(newText).observe(viewLifecycleOwner, {
+                        it.let {
+                            userAdapter.setFavouriteUser(it)
+                            showRvUser()
+                        }
+                    })
+                    Log.d(TAG, "onQueryTextSubmit: $searchQuery")
+                }
+                return true
+            }
+        })
     }
 
     private fun backPressClose() {
@@ -50,7 +91,8 @@ class FavouriteUserFragment : Fragment() {
             if (pressedTime + 5000 > System.currentTimeMillis()) {
                 activity?.finishAndRemoveTask()
             } else {
-                Toast.makeText(requireContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Press back again to exit", Toast.LENGTH_SHORT)
+                    .show();
             }
             pressedTime = System.currentTimeMillis()
         }

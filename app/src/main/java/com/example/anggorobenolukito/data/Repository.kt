@@ -62,4 +62,8 @@ class Repository @Inject constructor(
     fun getFavouriteUser(): LiveData<List<DetailUserEntity>> {
         return localDataSource.getFavouriteUser()
     }
+
+    fun searchFavouriteUser(query: String): LiveData<List<DetailUserEntity>> {
+        return localDataSource.searchFavouriteUser(query)
+    }
 }

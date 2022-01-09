@@ -70,6 +70,7 @@ data class DetailUserEntity(
 
     val following: Int? = null,
 
+    @ColumnInfo(name ="name")
     val name: String? = null,
 
     val location: String? = null,

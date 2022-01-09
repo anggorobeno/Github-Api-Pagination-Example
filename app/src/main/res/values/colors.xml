@@ -10,7 +10,7 @@
 
     // Custom Color
     <color name="search">#EAF2FF</color>
-    <color name="article">#FAFAFA</color>
+    <color name="card_view">#FAFAFA</color>
     <color name="text_black">#14142B</color>
     <color name="text_grey">#6A6A6A</color>
     <color name="primary_color">#E8D878</color>
