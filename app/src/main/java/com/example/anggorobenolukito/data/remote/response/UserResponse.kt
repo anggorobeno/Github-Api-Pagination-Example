@@ -1,6 +1,5 @@
 package com.example.anggorobenolukito.data.remote.response
 
-import com.example.anggorobenolukito.domain.UserModel
 import com.google.gson.annotations.SerializedName
 
 data class UserResponse(
@@ -12,10 +11,10 @@ data class UserResponse(
     val incompleteResults: Boolean,
 
     @field:SerializedName("items")
-    val items: List<ItemsItem>
+    val items: List<UserResult>
 )
 
-data class ItemsItem(
+data class UserResult(
 
     @field:SerializedName("repos_url")
     val reposUrl: String ,

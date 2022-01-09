@@ -6,7 +6,7 @@ import androidx.paging.PagingSource
 import com.example.anggorobenolukito.data.remote.network.ApiResponse
 import com.example.anggorobenolukito.data.remote.network.ApiService
 import com.example.anggorobenolukito.data.remote.response.DetailUserResponse
-import com.example.anggorobenolukito.data.remote.response.ItemsItem
+import com.example.anggorobenolukito.data.remote.response.UserResult
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.HttpException
@@ -20,9 +20,9 @@ class RemoteDataSource @Inject constructor(
     private val apiService: ApiService,
     private val query: String
 ) :
-    PagingSource<Int, ItemsItem>() {
+    PagingSource<Int, UserResult>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ItemsItem> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, UserResult> {
         return try {
             val position = params.key ?: STARTING_PAGE_INDEX
             val response = apiService.getUserPaged(

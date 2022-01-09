@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.anggorobenolukito.R
-import com.example.anggorobenolukito.data.remote.response.ItemsItem
+import com.example.anggorobenolukito.data.remote.response.UserResult
 import com.example.anggorobenolukito.databinding.ItemListUserBinding
 
-class UserPagingAdapter : PagingDataAdapter<ItemsItem, UserPagingAdapter.ViewHolder>(USER_DIFF) {
+class UserPagingAdapter : PagingDataAdapter<UserResult, UserPagingAdapter.ViewHolder>(USER_DIFF) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
             ItemListUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -32,7 +32,7 @@ class UserPagingAdapter : PagingDataAdapter<ItemsItem, UserPagingAdapter.ViewHol
 
     inner class ViewHolder(private val binding: ItemListUserBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: ItemsItem) {
+        fun bind(data: UserResult) {
             with(binding) {
                 Glide.with(itemView.context)
                     .load(data.avatarUrl)
@@ -49,12 +49,12 @@ class UserPagingAdapter : PagingDataAdapter<ItemsItem, UserPagingAdapter.ViewHol
 
 
     companion object {
-        private val USER_DIFF = object : DiffUtil.ItemCallback<ItemsItem>() {
-            override fun areItemsTheSame(oldItem: ItemsItem, newItem: ItemsItem): Boolean {
+        private val USER_DIFF = object : DiffUtil.ItemCallback<UserResult>() {
+            override fun areItemsTheSame(oldItem: UserResult, newItem: UserResult): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: ItemsItem, newItem: ItemsItem): Boolean {
+            override fun areContentsTheSame(oldItem: UserResult, newItem: UserResult): Boolean {
                 return oldItem == newItem
             }
 
@@ -62,7 +62,7 @@ class UserPagingAdapter : PagingDataAdapter<ItemsItem, UserPagingAdapter.ViewHol
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: ItemsItem)
+        fun onItemClicked(data: UserResult)
     }
 
 }

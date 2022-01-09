@@ -16,7 +16,7 @@ import androidx.navigation.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.anggorobenolukito.R
-import com.example.anggorobenolukito.data.remote.response.ItemsItem
+import com.example.anggorobenolukito.data.remote.response.UserResult
 import com.example.anggorobenolukito.databinding.FragmentUserBinding
 import com.example.anggorobenolukito.ui.adapter.UserLoadStateAdapter
 import com.example.anggorobenolukito.ui.adapter.UserPagingAdapter
@@ -114,7 +114,7 @@ class UserFragment : Fragment() {
                 userAdapter.retry()
             }
             userAdapter.setOnItemCallback(object : UserPagingAdapter.OnItemClickCallback {
-                override fun onItemClicked(data: ItemsItem) {
+                override fun onItemClicked(data: UserResult) {
                     val bundle = Bundle()
                     bundle.putString(Constant.EXTRA_USER, data.login)
                     findNavController().navigate(
