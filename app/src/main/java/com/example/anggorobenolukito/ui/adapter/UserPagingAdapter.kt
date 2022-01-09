@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.anggorobenolukito.R
-import com.example.anggorobenolukito.data.remote.response.UserResult
 import com.example.anggorobenolukito.databinding.ItemListUserBinding
+import com.example.anggorobenolukito.domain.model.UserModel
 
-class UserPagingAdapter : PagingDataAdapter<UserResult, UserPagingAdapter.ViewHolder>(USER_DIFF) {
+class UserPagingAdapter : PagingDataAdapter<UserModel, UserPagingAdapter.ViewHolder>(USER_DIFF) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
             ItemListUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -32,10 +32,11 @@ class UserPagingAdapter : PagingDataAdapter<UserResult, UserPagingAdapter.ViewHo
 
     inner class ViewHolder(private val binding: ItemListUserBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: UserResult) {
+        fun bind(data: UserModel) {
             with(binding) {
                 Glide.with(itemView.context)
                     .load(data.avatarUrl)
+                    .placeholder(R.drawable.custom_progress_bar_loading)
                     .error(R.drawable.ic_failed)
                     .into(ivAvatar)
                 tvUserType.text = data.type
@@ -49,12 +50,12 @@ class UserPagingAdapter : PagingDataAdapter<UserResult, UserPagingAdapter.ViewHo
 
 
     companion object {
-        private val USER_DIFF = object : DiffUtil.ItemCallback<UserResult>() {
-            override fun areItemsTheSame(oldItem: UserResult, newItem: UserResult): Boolean {
+        private val USER_DIFF = object : DiffUtil.ItemCallback<UserModel>() {
+            override fun areItemsTheSame(oldItem: UserModel, newItem: UserModel): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: UserResult, newItem: UserResult): Boolean {
+            override fun areContentsTheSame(oldItem: UserModel, newItem: UserModel): Boolean {
                 return oldItem == newItem
             }
 
@@ -62,7 +63,7 @@ class UserPagingAdapter : PagingDataAdapter<UserResult, UserPagingAdapter.ViewHo
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: UserResult)
+        fun onItemClicked(data: UserModel)
     }
 
 }

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.anggorobenolukito.data.local.entity.DetailUserEntity
+import com.example.anggorobenolukito.core.data.local.entity.DetailUserEntity
 import com.example.anggorobenolukito.databinding.ItemListUserBinding
 
 class FavouriteUserAdapter : ListAdapter<DetailUserEntity, FavouriteUserAdapter.ViewHolder>(

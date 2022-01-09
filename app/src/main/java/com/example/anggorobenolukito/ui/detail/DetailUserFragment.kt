@@ -10,8 +10,8 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.anggorobenolukito.R
 import com.example.anggorobenolukito.databinding.FragmentDetailUserBinding
-import com.example.anggorobenolukito.utils.Constant
-import com.example.anggorobenolukito.utils.Status
+import com.example.anggorobenolukito.core.utils.Constant
+import com.example.anggorobenolukito.core.utils.Status
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 

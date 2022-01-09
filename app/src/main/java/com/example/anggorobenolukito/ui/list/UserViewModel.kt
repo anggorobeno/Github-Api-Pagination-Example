@@ -5,12 +5,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
-import com.example.anggorobenolukito.data.Repository
+import com.example.anggorobenolukito.domain.usecase.UseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class UserViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
+class UserViewModel @Inject constructor(private val useCase: UseCase) : ViewModel() {
 
     private val currentQuery = MutableLiveData(DEFAULT_QUERY)
 
@@ -19,16 +19,12 @@ class UserViewModel @Inject constructor(private val repository: Repository) : Vi
     }
 
     val user = currentQuery.switchMap { currentQuery ->
-        repository.getUserSearchResults(currentQuery).cachedIn(viewModelScope)
+        useCase.getUserSearchResults(currentQuery).cachedIn(viewModelScope)
     }
 
-    fun searchUsers(query : String){
+    fun searchUsers(query: String) {
         currentQuery.value = query
     }
-
-
-
-
 
 
 }
