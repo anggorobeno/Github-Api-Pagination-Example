@@ -1,3 +1,10 @@
-# Github-Api-Pagination-Example
+# Github-Api-Pagination
 Pagination 3 Example using Github Api
-develop branch may contains some bug and still in progress
+## Tech Stack 
+- 100% Kotlin
+- Room Persistence
+- MVVM
+- Coroutines
+- Hilt DI
+## Info
+Develop branch may contains some bug and still in progress
