@@ -4,19 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.example.anggorobenolukito.data.Repository
-import com.example.anggorobenolukito.data.local.entity.DetailUserEntity
-import com.example.anggorobenolukito.utils.Resource
+import com.example.anggorobenolukito.core.data.local.entity.DetailUserEntity
+import com.example.anggorobenolukito.domain.usecase.UseCase
+import com.example.anggorobenolukito.core.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailUserViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
+class DetailUserViewModel @Inject constructor(private val useCase: UseCase) : ViewModel() {
     private val _username = MutableLiveData<String>()
 
     val getDetail: LiveData<Resource<DetailUserEntity>> =
         Transformations.switchMap(_username) { username ->
-            repository.getDetailUser(username)
+            useCase.getDetailUser(username)
         }
 
     fun setDetailUsername(username: String) {
@@ -29,7 +29,7 @@ class DetailUserViewModel @Inject constructor(private val repository: Repository
             val detailUser = resource.data
             if (detailUser != null) {
                 val newState = !detailUser.isFavourite
-                repository.setFavouriteUser(detailUser, newState)
+                useCase.setFavouriteUser(detailUser, newState)
             }
         }
     }

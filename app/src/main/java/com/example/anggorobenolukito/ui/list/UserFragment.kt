@@ -16,11 +16,11 @@ import androidx.navigation.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.anggorobenolukito.R
-import com.example.anggorobenolukito.data.remote.response.UserResult
+import com.example.anggorobenolukito.core.utils.Constant
 import com.example.anggorobenolukito.databinding.FragmentUserBinding
+import com.example.anggorobenolukito.domain.model.UserModel
 import com.example.anggorobenolukito.ui.adapter.UserLoadStateAdapter
 import com.example.anggorobenolukito.ui.adapter.UserPagingAdapter
-import com.example.anggorobenolukito.utils.Constant
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -96,7 +96,7 @@ class UserFragment : Fragment() {
                     getString(R.string.back_to_exit),
                     Toast.LENGTH_SHORT
                 )
-                    .show();
+                    .show()
             }
             pressedTime = System.currentTimeMillis()
         }
@@ -114,7 +114,7 @@ class UserFragment : Fragment() {
                 userAdapter.retry()
             }
             userAdapter.setOnItemCallback(object : UserPagingAdapter.OnItemClickCallback {
-                override fun onItemClicked(data: UserResult) {
+                override fun onItemClicked(data: UserModel) {
                     val bundle = Bundle()
                     bundle.putString(Constant.EXTRA_USER, data.login)
                     findNavController().navigate(
@@ -147,7 +147,7 @@ class UserFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                return false
+                return true
             }
         })
     }

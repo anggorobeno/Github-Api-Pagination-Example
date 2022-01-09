@@ -17,10 +17,10 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.anggorobenolukito.R
-import com.example.anggorobenolukito.data.local.entity.DetailUserEntity
+import com.example.anggorobenolukito.core.data.local.entity.DetailUserEntity
 import com.example.anggorobenolukito.databinding.FragmentFavouriteUserBinding
 import com.example.anggorobenolukito.ui.adapter.FavouriteUserAdapter
-import com.example.anggorobenolukito.utils.Constant
+import com.example.anggorobenolukito.core.utils.Constant
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -88,7 +88,7 @@ class FavouriteUserFragment : Fragment() {
                     getString(R.string.back_to_exit),
                     Toast.LENGTH_SHORT
                 )
-                    .show();
+                    .show()
             }
             pressedTime = System.currentTimeMillis()
         }
@@ -116,7 +116,6 @@ class FavouriteUserFragment : Fragment() {
     }
 
     private fun showRvUser() {
-        binding.progressCircular.isVisible = false
         with(binding.rvUser) {
             this.layoutManager = LinearLayoutManager(context)
             this.setHasFixedSize(true)
@@ -150,12 +149,12 @@ class FavouriteUserFragment : Fragment() {
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             if (view != null) {
-                val swipedPosition = viewHolder.adapterPosition
+                val swipedPosition = viewHolder.bindingAdapterPosition
                 val detailUserEntity = userAdapter.getSwipedData(swipedPosition)
                 detailUserEntity?.let { viewModel.setFavouriteUser(it) }
                 val snackbar =
                     Snackbar.make(view as View, R.string.message_undo, Snackbar.LENGTH_LONG)
-                snackbar.setAction(R.string.message_ok) { v ->
+                snackbar.setAction(R.string.message_ok) { _ ->
                     detailUserEntity?.let { viewModel.setFavouriteUser(it) }
                 }
                 snackbar.show()
