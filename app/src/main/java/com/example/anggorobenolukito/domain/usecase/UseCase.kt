@@ -3,8 +3,8 @@ package com.example.anggorobenolukito.domain.usecase
 import androidx.lifecycle.LiveData
 import androidx.paging.PagingData
 import com.example.anggorobenolukito.core.data.local.entity.DetailUserEntity
-import com.example.anggorobenolukito.domain.model.UserModel
 import com.example.anggorobenolukito.core.utils.Resource
+import com.example.anggorobenolukito.domain.model.UserModel
 
 interface UseCase {
     fun getUserSearchResults(query: String): LiveData<PagingData<UserModel>>

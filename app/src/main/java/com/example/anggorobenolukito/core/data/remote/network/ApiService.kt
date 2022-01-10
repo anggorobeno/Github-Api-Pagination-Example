@@ -4,7 +4,10 @@ import com.example.anggorobenolukito.BuildConfig
 import com.example.anggorobenolukito.core.data.remote.response.DetailUserResponse
 import com.example.anggorobenolukito.core.data.remote.response.UserResponse
 import retrofit2.Call
-import retrofit2.http.*
+import retrofit2.http.GET
+import retrofit2.http.Headers
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
     @GET("/search/users")

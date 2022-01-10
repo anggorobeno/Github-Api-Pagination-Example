@@ -7,10 +7,10 @@ import com.example.anggorobenolukito.core.data.Repository
 import com.example.anggorobenolukito.core.data.local.room.GithubDB
 import com.example.anggorobenolukito.core.data.local.room.GithubDao
 import com.example.anggorobenolukito.core.data.remote.network.ApiService
+import com.example.anggorobenolukito.core.utils.AppExecutors
 import com.example.anggorobenolukito.domain.repository.IRepository
 import com.example.anggorobenolukito.domain.usecase.Interactor
 import com.example.anggorobenolukito.domain.usecase.UseCase
-import com.example.anggorobenolukito.core.utils.AppExecutors
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

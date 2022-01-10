@@ -18,9 +18,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.anggorobenolukito.R
 import com.example.anggorobenolukito.core.data.local.entity.DetailUserEntity
+import com.example.anggorobenolukito.core.utils.Constant
 import com.example.anggorobenolukito.databinding.FragmentFavouriteUserBinding
 import com.example.anggorobenolukito.ui.adapter.FavouriteUserAdapter
-import com.example.anggorobenolukito.core.utils.Constant
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 

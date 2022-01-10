@@ -11,10 +11,10 @@ import com.example.anggorobenolukito.core.data.remote.RemoteDataSource
 import com.example.anggorobenolukito.core.data.remote.network.ApiResponse
 import com.example.anggorobenolukito.core.data.remote.network.ApiService
 import com.example.anggorobenolukito.core.data.remote.response.DetailUserResponse
-import com.example.anggorobenolukito.domain.model.UserModel
-import com.example.anggorobenolukito.domain.repository.IRepository
 import com.example.anggorobenolukito.core.utils.AppExecutors
 import com.example.anggorobenolukito.core.utils.DataMapper
+import com.example.anggorobenolukito.domain.model.UserModel
+import com.example.anggorobenolukito.domain.repository.IRepository
 import javax.inject.Inject
 
 class Repository @Inject constructor(

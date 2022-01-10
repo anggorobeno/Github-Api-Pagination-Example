@@ -6,8 +6,8 @@ import androidx.paging.PagingSource
 import com.example.anggorobenolukito.core.data.remote.network.ApiResponse
 import com.example.anggorobenolukito.core.data.remote.network.ApiService
 import com.example.anggorobenolukito.core.data.remote.response.DetailUserResponse
-import com.example.anggorobenolukito.domain.model.UserModel
 import com.example.anggorobenolukito.core.utils.DataMapper
+import com.example.anggorobenolukito.domain.model.UserModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.HttpException

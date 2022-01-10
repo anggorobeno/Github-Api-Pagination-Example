@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.example.anggorobenolukito.core.data.local.entity.DetailUserEntity
-import com.example.anggorobenolukito.domain.usecase.UseCase
 import com.example.anggorobenolukito.core.utils.Resource
+import com.example.anggorobenolukito.domain.usecase.UseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

@@ -21,7 +21,6 @@ import com.example.anggorobenolukito.databinding.FragmentUserBinding
 import com.example.anggorobenolukito.domain.model.UserModel
 import com.example.anggorobenolukito.ui.adapter.UserLoadStateAdapter
 import com.example.anggorobenolukito.ui.adapter.UserPagingAdapter
-import com.example.anggorobenolukito.utils.Constant
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
