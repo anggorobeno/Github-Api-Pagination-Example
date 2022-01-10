@@ -116,7 +116,6 @@ class FavouriteUserFragment : Fragment() {
     }
 
     private fun showRvUser() {
-        binding.progressCircular.isVisible = false
         with(binding.rvUser) {
             this.layoutManager = LinearLayoutManager(context)
             this.setHasFixedSize(true)

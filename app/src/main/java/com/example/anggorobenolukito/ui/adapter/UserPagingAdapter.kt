@@ -36,7 +36,7 @@ class UserPagingAdapter : PagingDataAdapter<UserModel, UserPagingAdapter.ViewHol
             with(binding) {
                 Glide.with(itemView.context)
                     .load(data.avatarUrl)
-                    .placeholder(R.drawable.custom_progress_bar_loading)
+                    .placeholder(R.drawable.user_placeholder)
                     .error(R.drawable.ic_failed)
                     .into(ivAvatar)
                 tvUserType.text = data.type
